@@ -39,3 +39,10 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Keystore / signing
+guild-release.keystore
+keystore.properties
+android/
+.env
+

@@ -32,8 +32,7 @@
         }
       ],
       "expo-secure-store",
-      "expo-image",
-      "expo-haptics"
+      "expo-image"
     ],
     "extra": {
       "googleSignIn": {
