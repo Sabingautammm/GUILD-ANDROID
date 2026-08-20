@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "GUILD",
+    "slug": "guild-android",
+    "scheme": "guildapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "android": {
+      "package": "com.guild.app",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#0c0a07",
+        "foregroundImage": "./assets/icon.png"
+      },
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE"
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "com.guild.app",
+      "supportsTablet": true
+    },
+    "plugins": [
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.11417688799-3glnd99h17gckc0f5g4imj2jhd4v26in"
+        }
+      ],
+      "expo-secure-store",
+      "expo-image",
+      "expo-haptics"
+    ],
+    "extra": {
+      "googleSignIn": {
+        "webClientId": "11417688799-3glnd99h17gckc0f5g4imj2jhd4v26in.apps.googleusercontent.com"
+      }
+    }
+  }
+}
