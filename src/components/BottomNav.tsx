@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Home, Trophy, User } from 'lucide-react-native';
+import { Home, Trophy, User, Users, Image, Bell } from 'lucide-react-native';
 import { theme } from '../theme';
 
 interface BottomNavProps {
@@ -11,6 +11,9 @@ interface BottomNavProps {
 const tabs = [
   { id: 'home', label: 'Home', Icon: Home },
   { id: 'leaderboard', label: 'Leaderboard', Icon: Trophy },
+  { id: 'members', label: 'Guilds', Icon: Users },
+  { id: 'gallery', label: 'Gallery', Icon: Image },
+  { id: 'notifications', label: 'Notify', Icon: Bell },
   { id: 'profile', label: 'Profile', Icon: User },
 ];
 

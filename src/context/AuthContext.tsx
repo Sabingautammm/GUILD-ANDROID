@@ -8,6 +8,8 @@ interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
   needsOnboarding: boolean;
+  membership: OnboardingInfo | null;
+  role: string | null;
 }
 
 interface AuthContextValue extends AuthState {
@@ -25,6 +27,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     isAuthenticated: false,
     isLoading: true,
     needsOnboarding: false,
+    membership: null,
+    role: null,
   });
 
   const refresh = useCallback(async () => {
@@ -36,6 +40,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isAuthenticated: true,
         isLoading: false,
         needsOnboarding: res.onboarding?.needsOnboarding ?? false,
+        membership: res.onboarding,
+        role: res.onboarding?.role ?? null,
       });
     } catch {
       setState({
@@ -44,6 +50,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isAuthenticated: false,
         isLoading: false,
         needsOnboarding: false,
+        membership: null,
+        role: null,
       });
     }
   }, []);
@@ -56,6 +64,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       isAuthenticated: true,
       isLoading: false,
       needsOnboarding: res.onboarding?.needsOnboarding ?? false,
+      membership: res.onboarding,
+      role: res.onboarding?.role ?? null,
     });
     return res;
   }, []);
@@ -73,6 +83,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       isAuthenticated: false,
       isLoading: false,
       needsOnboarding: false,
+      membership: null,
+      role: null,
     });
   }, []);
 
