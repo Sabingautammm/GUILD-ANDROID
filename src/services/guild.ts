@@ -59,3 +59,40 @@ export function getMediaFeed() {
 export function getNotifications() {
   return apiFetch<{ notifications: any[] }>('/notifications');
 }
+
+export function getGuildLeaderboard() {
+  return apiFetch<Guild[]>(`/leaderboards/guilds`);
+}
+
+export function getPrivateGuildView(guildUid: string) {
+  return apiFetch<{ guild: Guild; roster: any[] }>(`/guild/${guildUid}/private`);
+}
+
+export function applyToGuild(guildUid: string) {
+  return apiFetch<any>(`/guild/${guildUid}/apply`, { method: 'POST' });
+}
+
+export function leaveGuild(guildUid: string) {
+  return apiFetch<any>(`/guild/${guildUid}/leave`, { method: 'POST' });
+}
+
+export function updateGuild(guildUid: string, data: { introduction?: string; history?: string }) {
+  return apiFetch<any>(`/guild/${guildUid}`, { method: 'PATCH', body: data });
+}
+
+export function getMemberById(memberId: string) {
+  return apiFetch<any>(`/members/${memberId}`);
+}
+
+export function getMedia(params?: { guildUid?: string; playerUid?: string; type?: string; limit?: number }) {
+  const query = new URLSearchParams();
+  if (params?.guildUid) query.set('guildUid', params.guildUid);
+  if (params?.playerUid) query.set('playerUid', params.playerUid);
+  if (params?.type) query.set('type', params.type);
+  if (params?.limit) query.set('limit', String(params.limit));
+  return apiFetch<any[]>(`/media?${query.toString()}`);
+}
+
+export function uploadMedia(file: FormData) {
+  return apiFetch<any>('/media/upload', { method: 'POST', body: file });
+}
